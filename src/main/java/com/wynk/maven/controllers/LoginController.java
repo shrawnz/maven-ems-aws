@@ -1,7 +1,11 @@
 package com.wynk.maven.controllers;
 
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,10 +16,35 @@ import com.wynk.maven.models.LoginBean;
 @Controller
 public class LoginController {
 
-	@RequestMapping("/login")
-	public String login() {
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public ModelAndView user() {
+		return new ModelAndView("login", "loginAttr", new LoginBean());
+	}
+
+	@RequestMapping(value = "/loginRequest", method = RequestMethod.POST)
+	public String save(@ModelAttribute("loginAttr") @Valid LoginBean loginBean, 
+			BindingResult result, ModelMap model, HttpSession httpSession) {
+	
+		if(result.hasErrors()) {
+			return "login";
+		}
+		if(LoginService.authenticateUser(loginBean)) {
+			httpSession.setAttribute("username", loginBean.getUsername());
+			return "home";
+		}
+		
+		model.addAttribute("message","Invalid credentials");
 		return "login";
 	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public String logout(HttpSession httpSession) {
+		System.out.println("LOGGED OUT");
+		System.out.println(httpSession.getAttribute("username"));
+		httpSession.invalidate();
+		return "home";
+	}
+//	@RequestMapping("/")
 	
 //	@RequestMapping("/login")
 //	public String welcomeMessage(ModelMap model) {
@@ -28,13 +57,6 @@ public class LoginController {
 //			return new ModelAndView("user", "userAttr", new User());
 //	}
 //	
-//	@RequestMapping(value = "/save", method = RequestMethod.POST)
-//		public String save(@ModelAttribute("userAttr") User user, ModelMap model) {
-//		
-//		System.out.println("Edit");
-//		model.addAttribute("id", user.getId());
-//		model.addAttribute("name", user.getName());
-//		return "result";
-//
+
 //	}
 }
