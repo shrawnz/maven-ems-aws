@@ -14,7 +14,7 @@
 		<div class="row">
 			<div class="col-md-4 mt-4">
 				<h3>Login</h3>
-				<form:form method="POST"  modelAttribute="loginAttr" action="./loginRequest">
+				<form:form method="POST"  modelAttribute="loginAttr" action="./login">
 					<div class="form-group">
 						<input type="text" class="form-control" name="username" placeholder="Username"
 							value="" />

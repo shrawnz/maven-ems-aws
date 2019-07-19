@@ -16,12 +16,17 @@ import com.wynk.maven.models.LoginBean;
 @Controller
 public class LoginController {
 
+	@RequestMapping("/")
+	public String hello() {
+		return "index";
+	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView user() {
 		return new ModelAndView("login", "loginAttr", new LoginBean());
 	}
 
-	@RequestMapping(value = "/loginRequest", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String save(@ModelAttribute("loginAttr") @Valid LoginBean loginBean, 
 			BindingResult result, ModelMap model, HttpSession httpSession) {
 	
@@ -42,7 +47,7 @@ public class LoginController {
 		System.out.println("LOGGED OUT");
 		System.out.println(httpSession.getAttribute("username"));
 		httpSession.invalidate();
-		return "home";
+		return "login";
 	}
 //	@RequestMapping("/")
 	
