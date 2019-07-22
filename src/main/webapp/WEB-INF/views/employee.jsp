@@ -30,9 +30,10 @@
     			<td scope="col">${employee.getName()}</td>
     			<td scope="col">${employee.getDepartment()}</td>
     			<td scope="col">${employee.getEmail()}</td>
-    			<td><form action="/maven-ems/editEmployee/${employee.getId()}" method="get">
+    			<td><form action="/maven-ems/editEmployee" method="get">
+    			<input type="hidden" name="id" value="${employee.getId()}"/>
     			<input type="submit" value="Edit" /> </form>
-    			<form action="/maven-ems/deleteEmployee/${employee.getId()}" method="post">
+    			<form action="/maven-ems/deleteEmployee?id=${employee.getId()}" method="post">
     			<input type="submit" value="Delete" /> </form>
     			</td>
     			</tr>

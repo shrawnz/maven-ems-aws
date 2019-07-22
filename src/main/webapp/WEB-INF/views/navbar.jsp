@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<form class="form-inline" action="SuccessServlet" method="get">
-		<a class="navbar-brand" href="./SuccessServlet?home=home">Home</a>
+		<a class="navbar-brand" href="/maven-ems/">Home</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"

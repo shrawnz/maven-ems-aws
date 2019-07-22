@@ -43,7 +43,7 @@ public class LoginController {
 		
 		if(loginService.authenticateUser(loginBean)) {
 			httpSession.setAttribute("username", loginBean.getUsername());
-			return "home";
+			return "index";
 		}
 		
 		model.addAttribute("message","Invalid credentials");

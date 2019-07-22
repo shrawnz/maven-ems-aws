@@ -18,7 +18,7 @@ public class EmployeeBean {
 	@NotBlank(message="Email cannot be blank")	
 	private String email;
 	
-	private static final AtomicLong counter = new AtomicLong(1);
+	private static final AtomicLong counter = new AtomicLong(10);
 	
 	public EmployeeBean(String name, String department, String email) {
 		this.id = Long.toString(counter.incrementAndGet());
