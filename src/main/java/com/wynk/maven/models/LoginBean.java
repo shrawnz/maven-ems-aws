@@ -1,8 +1,9 @@
 package com.wynk.maven.models;
-
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.hibernate.validator.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+@Document(collection="login_details")
 public class LoginBean {
 
 	@NotBlank(message="username cannot be blank")
@@ -26,5 +27,9 @@ public class LoginBean {
 		this.password = password;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "LoginBean [username=" + username + ", password=" + password + "]";
+	}	
+
 }

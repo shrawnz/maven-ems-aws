@@ -16,12 +16,12 @@
 					<li class="nav-item active"><a class="nav-link"
 						href="#">Profile</a></li>
 					<li class="nav-item active"><a class="nav-link"
-						href="#">Employee</a></li>
+						href="/maven-ems/employee">Employee</a></li>
 				</ul>
 			</div>
 			</form>
 			<div class="collapse navbar-collapse"></div>
-			<form class="form-inline" action="./logout" method="POST">
+			<form class="form-inline" action="/maven-ems/logout" method="POST">
 				<ul class="navbar-nav">
 					<li class="nav-item active">
 						<input type="submit" name="logoutButton" value="Logout"/>
@@ -31,7 +31,7 @@
 		<% } else { %>
 			<div class="collapse navbar-collapse"></div>
 				<ul class="navbar-nav">
-					<li class="nav-item active"><a class="nav-link" href="./login">Login</a></li>
+					<li class="nav-item active"><a class="nav-link" href="/maven-ems/login">Login</a></li>
 				</ul>
 		<% }%>
 </nav>

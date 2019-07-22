@@ -3,6 +3,7 @@ package com.wynk.maven.controllers;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -12,10 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wynk.maven.models.LoginBean;
+import com.wynk.maven.services.LoginService;
 
 @Controller
 public class LoginController {
-
+	
+	@Autowired
+	private LoginService loginService;
+	
 	@RequestMapping("/")
 	public String hello() {
 		return "index";
@@ -33,7 +38,10 @@ public class LoginController {
 		if(result.hasErrors()) {
 			return "login";
 		}
-		if(LoginService.authenticateUser(loginBean)) {
+		
+//		List users = loginRepo.findAll();
+		
+		if(loginService.authenticateUser(loginBean)) {
 			httpSession.setAttribute("username", loginBean.getUsername());
 			return "home";
 		}
@@ -49,19 +57,5 @@ public class LoginController {
 		httpSession.invalidate();
 		return "login";
 	}
-//	@RequestMapping("/")
-	
-//	@RequestMapping("/login")
-//	public String welcomeMessage(ModelMap model) {
-//		model.addAttribute("message", "Hello Spring MVC Framework");
-//		return "welcome";
-//	}
-//	
-//	@RequestMapping(value = "/user", method = RequestMethod.GET)
-//		public ModelAndView user() {
-//			return new ModelAndView("user", "userAttr", new User());
-//	}
-//	
 
-//	}
 }
