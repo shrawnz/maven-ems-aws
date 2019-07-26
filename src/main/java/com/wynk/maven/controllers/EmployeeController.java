@@ -14,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,6 +58,40 @@ public class EmployeeController {
 		return new ResponseEntity<String>(response.toString(), HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/addJson", method = RequestMethod.POST, produces="application/json")
+	public ResponseEntity<String> addEmpJson(@RequestBody EmployeeBean emp){
+		JSONObject response = new JSONObject();
+		try {
+			EmployeeBean newEmp = new EmployeeBean(emp.getName(), emp.getDepartment(), emp.getEmail());
+			employeeServices.addEmployee(newEmp);
+			response.put("inserted", "true");
+			response.put("id", newEmp.getId());
+		} catch(Exception ex) {
+			response.put("error", ex.toString());
+		}
+		return new ResponseEntity<String>(response.toString(), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/employees", method = RequestMethod.GET, produces="application/json")
+	public ResponseEntity<String> viewAll(){
+		
+		String response;
+		try {
+			List<EmployeeBean> emps = employeeServices.listEmployees();
+//			String emp = gson.toJson(emps);
+			JSONObject res = new JSONObject();
+//			res.put("response", emps);
+//			response = res.toString();
+			response = gson.toJson(emps);
+			
+		} catch(Exception ex) {
+			JSONObject res = new JSONObject();
+			res.put("error", ex.toString());
+			response = res.toString();
+		}
+		return new ResponseEntity<String>(response, HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/view", method = RequestMethod.GET, produces="application/json")
 	public ResponseEntity<String> view(@RequestParam("id") String id) {
 		
@@ -85,7 +120,20 @@ public class EmployeeController {
 		}
 		
 		return new ResponseEntity<String>(response.toString(), HttpStatus.OK);
-	}	
+	}
+	
+	@RequestMapping(value = "/updateJson", method = RequestMethod.POST, produces="application/json")
+	public ResponseEntity<String> updateEmpJson(@RequestBody EmployeeBean emp){
+		JSONObject response = new JSONObject();
+		try {
+			employeeServices.updateEmployee(emp);
+			response.put("updated", "true");
+		}catch(Exception ex) {
+			response.put("error", ex.toString());
+		}
+		
+		return new ResponseEntity<String>(response.toString(), HttpStatus.OK);
+	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST, produces="application/json")
 	public ResponseEntity<String> delete(@RequestParam("id") String id) {
