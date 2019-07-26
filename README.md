@@ -7,7 +7,8 @@ http://13.58.24.90:8080/maven-ems-json/
 
 * **URL**
 
-  /add
+  /add <br/>
+  /addJson (To send parameters as a json in the HTML body)
 
 * **Method:**
 
