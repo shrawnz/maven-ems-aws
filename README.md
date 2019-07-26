@@ -34,3 +34,67 @@ http://13.58.24.90:8080/maven-ems-json/
 
   * **Content:** `{ error : <error msg> }`
 
+
+
+**View Employee**
+  ----
+  View data of a particular employee;
+
+  * **URL**
+
+    /view
+
+  * **Method:**
+
+    `GET`
+
+  *  **URL Params**
+
+     **Required:**
+
+     `id=[String]`
+
+  * **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:** `{
+                      id: <id>,
+                      name: <name>,
+                      department: <department>,
+                      email: <email>
+                    }`
+
+  * **Error Response:**
+
+    * **Content:** `{ error : <error msg> }`
+
+
+  **View Employees**
+      ----
+      View data of all employees;
+
+      * **URL**
+
+        /employees
+
+      * **Method:**
+
+        `GET`
+
+      *  **URL Params**
+
+          None
+
+      * **Success Response:**
+
+        * **Code:** 200 <br />
+          **Content:** `[{
+                          id: <id>,
+                          name: <name>,
+                          department: <department>,
+                          email: <email>
+                        }]`
+
+      * **Error Response:**
+
+        * **Content:** `{ error : <error msg> }`
