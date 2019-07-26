@@ -70,10 +70,10 @@ http://13.58.24.90:8080/maven-ems-json/
 
 
   **View Employees**
-      ----
-      View data of all employees;
+  ----
+  View data of all employees;
 
-      * **URL**
+  * **URL**
 
         /employees
 
