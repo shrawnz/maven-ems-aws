@@ -98,3 +98,69 @@ http://13.58.24.90:8080/maven-ems-json/
   * **Error Response:**
 
        * **Content:** `{ error : <error msg> }`
+       
+**Update Employees**
+----
+  Update data of an employee;
+
+* **URL**
+
+  /update <br/>
+  /updateJson (To send parameters as a json in the HTML body)
+
+* **Method:**
+
+  `POST`
+
+*  **URL Params**
+
+   **Required:**
+
+   `id=[String]`
+   `name=[String]`
+   `department=[String]`
+   `email=[String]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{
+                    updated : true,
+                  }`
+
+* **Error Response:**
+
+  * **Content:** `{ error : <error msg> }`
+
+
+
+**Delete Employee**
+  ----
+  Delete data of a particular employee;
+
+  * **URL**
+
+    /delete
+
+  * **Method:**
+
+    `post_status`
+
+  *  **URL Params**
+
+     **Required:**
+
+     `id=[String]`
+
+  * **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:** `{
+                      'deleted: true'
+                    }`
+
+  * **Error Response:**
+
+    * **Content:** `{ error : <error msg> }`
+
+
