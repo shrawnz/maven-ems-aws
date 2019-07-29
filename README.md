@@ -75,15 +75,15 @@ http://13.58.24.90:8080/maven-ems-json/
 
   * **URL**
 
-        /employees
+       /employees
 
   * **Method:**
 
-        `GET`
+      `GET`
 
   *  **URL Params**
 
-          None
+        None
 
   * **Success Response:**
 
@@ -144,7 +144,7 @@ http://13.58.24.90:8080/maven-ems-json/
 
   * **Method:**
 
-    `post_status`
+    `POST`
 
   *  **URL Params**
 
