@@ -87,7 +87,7 @@ http://13.58.24.90:8080/maven-ems-json/
 
   * **Success Response:**
 
-        * **Code:** 200 <br />
+       * **Code:** 200 <br />
           **Content:** `[{
                           id: <id>,
                           name: <name>,
@@ -97,4 +97,4 @@ http://13.58.24.90:8080/maven-ems-json/
 
   * **Error Response:**
 
-        * **Content:** `{ error : <error msg> }`
+       * **Content:** `{ error : <error msg> }`
